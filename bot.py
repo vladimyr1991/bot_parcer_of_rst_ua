@@ -73,7 +73,7 @@ def command_handler():
                             
                             bot.send_message(431200271, f'{web_site}{link_to_car}')
                             bot.send_message(431200271, f'ЦЕНА: {car_price}')
-                            
+                time.sleep(300)            
 if __name__ == "__main__":
     # bot.polling(none_stop=True)
     command_handler()
