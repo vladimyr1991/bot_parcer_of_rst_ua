@@ -35,14 +35,14 @@ data_base = [x[0] for x in row]
 @bot.message_handler(commands=['start', 'help'])
 def command_handler(message):
     i  = True
-    print('тест')
+    # print('тест')
     bot.send_message(message.chat.id, f'Привет я заработал!')
     while i:      
         with sqlite3.connect("list_of_cars.db") as conn:
             for city, link in regions.items():
                 for i in range(1,11):
                     time.sleep(10)
-                    # print(f'{city}:{i}')
+                    print(f'{city}:{i}')
                     r = requests.get(f'{regions[city]}/{i}.html', headers={'User-Agent':UserAgent().chrome})
                     html = r.content
                     soup = BeautifulSoup(html,'html.parser')
