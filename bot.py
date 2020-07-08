@@ -6,6 +6,7 @@ import time
 import sqlite3
 import telebot
 from telebot.types import Message
+import random
 
 TOKEN = '1315762320:AAGrFbOXp4w427CeGY_ofPxCyCR5-Uu5gf0'
 
@@ -77,7 +78,7 @@ def command_handler():
                             
                             bot.send_message(431200271, f'{web_site}{link_to_car}')
                             bot.send_message(431200271, f'ЦЕНА: {car_price}')
-                    time.sleep(60)
+                    time.sleep(random.randint(10, 80))
             time.sleep(300)            
 if __name__ == "__main__":
     # bot.polling(none_stop=True)
