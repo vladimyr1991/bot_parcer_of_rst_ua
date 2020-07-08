@@ -32,11 +32,13 @@ cursor.execute('''SELECT * FROM list_of_refs''')
 row = cursor.fetchall()
 data_base = [x[0] for x in row]
 
-@bot.message_handler(commands=['start', 'help'])
-def command_handler(message):
+# @bot.message_handler(commands=['start', 'help'])
+def command_handler():
     i  = True
     # print('тест')
-    bot.send_message(message.chat.id, f'Привет я заработал!')
+    bot.send_message(431200271, f'Привет я заработал но уже на сервере!')
+    bot.send_message(624450338, f'Привет я заработал но уже на сервере!')
+    
     while i:      
         with sqlite3.connect("list_of_cars.db") as conn:
             for city, link in regions.items():
@@ -73,4 +75,5 @@ def command_handler(message):
                             bot.send_message(431200271, f'ЦЕНА: {car_price}')
                             
 if __name__ == "__main__":
-    bot.polling(none_stop=True)
+    # bot.polling(none_stop=True)
+    command_handler()
