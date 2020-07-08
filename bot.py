@@ -34,6 +34,7 @@ row = cursor.fetchall()
 data_base = [x[0] for x in row]
 
 def command_handler():
+    bot.send_message(431200271, f'Бот работает на сервере')
     i  = True
     while i:      
         with sqlite3.connect("list_of_cars.db") as conn:
