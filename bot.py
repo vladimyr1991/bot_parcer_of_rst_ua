@@ -40,14 +40,14 @@ def command_handler():
         with sqlite3.connect("list_of_cars.db") as conn:
             for city, link in regions.items():
                 for i in range(1,11):
-                    time.sleep(10)
-                    print(f'{city}:{i}')
+                    time.sleep(30)
+                    # print(f'{city}:{i}')
                     r = requests.get(f'{regions[city]}/{i}.html', headers={'User-Agent':UserAgent().chrome})
                     html = r.content
                     soup = BeautifulSoup(html,'html.parser')
                     obj = soup.find_all('a', attrs = {'class':'rst-ocb-i-a'})
                     obj_price = soup.find_all('span', attrs = {'class':'rst-uix-grey'})
-                    print(obj)
+                    # print(obj)
                     for x in range(len(obj)):
                         
                         try:
