@@ -34,7 +34,7 @@ row = cursor.fetchall()
 data_base = [x[0] for x in row]
 
 @bot.message_handler(commands=['start'])
-def command_handler():
+def command_handler(message):
     bot.send_message(431200271, f'Бот работает на сервере')
     i  = True
     while i:      
