@@ -46,7 +46,10 @@ def command_handler():
                 for i in range(1,11):
                     
                     print(f'{city}:{i}')
-                    r = requests.get(f'{regions[city]}/{i}.html', headers={'User-Agent':UserAgent().chrome})
+                    if i == 1:
+                        r = requests.get(f'{regions[city]}', headers={'User-Agent':UserAgent().chrome})
+                    else:
+                        r = requests.get(f'{regions[city]}/{i}.html', headers={'User-Agent':UserAgent().chrome})
                     if int(r.status_code) == 403:
                         bot.send_message(431200271, f'Забанили')
                         bot.send_message(624450338, f'Забанили')
@@ -80,6 +83,7 @@ def command_handler():
                             bot.send_message(431200271, f'ЦЕНА: {car_price}')
                     time.sleep(random.randint(10, 80))
             time.sleep(300)            
+
 if __name__ == "__main__":
     # bot.polling(none_stop=True)
     command_handler()
