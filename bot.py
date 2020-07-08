@@ -7,7 +7,32 @@ import sqlite3
 import telebot
 from telebot.types import Message
 
+TOKEN = '1315762320:AAGrFbOXp4w427CeGY_ofPxCyCR5-Uu5gf0'
 
+bot = telebot.TeleBot(TOKEN)
+
+# создаем таблицу если отсустсвует
+try:
+    cursor.execute("""CREATE TABLE list_of_refs
+                    (href text)
+                """)
+except:
+    pass
+
+
+web_site = 'https://rst.ua'
+
+regions = {'komsomolsk':'http://rst.ua/oldcars/poltava/499',
+        'kremenchug':'http://rst.ua/oldcars/poltava/501',
+        'svetlovodsk':'http://rst.ua/oldcars/kirovograd/305'}
+
+conn = sqlite3.connect("list_of_cars.db")
+cursor = conn.cursor()
+cursor.execute('''SELECT * FROM list_of_refs''')
+row = cursor.fetchall()
+data_base = [x[0] for x in row]
+
+@bot.message_handler(commands=['start', 'help'])
 def command_handler():
     i  = True
     print('тест')
@@ -48,30 +73,4 @@ def command_handler():
                             bot.send_message(431200271, f'ЦЕНА: {car_price}')
                             
 if __name__ == "__main__":
-    
-    TOKEN = '1315762320:AAGrFbOXp4w427CeGY_ofPxCyCR5-Uu5gf0'
-
-    bot = telebot.TeleBot(TOKEN)
-
-    # создаем таблицу если отсустсвует
-    try:
-        cursor.execute("""CREATE TABLE list_of_refs
-                        (href text)
-                    """)
-    except:
-        pass
-
-
-    web_site = 'https://rst.ua'
-
-    regions = {'komsomolsk':'http://rst.ua/oldcars/poltava/499',
-            'kremenchug':'http://rst.ua/oldcars/poltava/501',
-            'svetlovodsk':'http://rst.ua/oldcars/kirovograd/305'}
-
-    conn = sqlite3.connect("list_of_cars.db")
-    cursor = conn.cursor()
-    cursor.execute('''SELECT * FROM list_of_refs''')
-    row = cursor.fetchall()
-    data_base = [x[0] for x in row]
-
-    command_handler()
+    bot.polling(none_stop=True)
