@@ -43,14 +43,18 @@ def command_handler():
         with sqlite3.connect("list_of_cars.db") as conn:
             for city, link in regions.items():
                 for i in range(1,11):
-                    time.sleep(10)
+                    
                     print(f'{city}:{i}')
                     r = requests.get(f'{regions[city]}/{i}.html', headers={'User-Agent':UserAgent().chrome})
+                    if int(r.status_code) == 403:
+                        bot.send_message(431200271, f'Забанили')
+                        bot.send_message(624450338, f'Забанили')
+                        
                     html = r.content
                     soup = BeautifulSoup(html,'html.parser')
                     obj = soup.find_all('a', attrs = {'class':'rst-ocb-i-a'})
                     obj_price = soup.find_all('span', attrs = {'class':'rst-uix-grey'})
-                    # print(obj)
+                    
                     for x in range(len(obj)):
                         
                         try:
@@ -73,6 +77,7 @@ def command_handler():
                             
                             bot.send_message(431200271, f'{web_site}{link_to_car}')
                             bot.send_message(431200271, f'ЦЕНА: {car_price}')
+                    time.sleep(60)
             time.sleep(300)            
 if __name__ == "__main__":
     # bot.polling(none_stop=True)
