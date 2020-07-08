@@ -36,6 +36,7 @@ data_base = [x[0] for x in row]
 
 def command_handler():
     i  = True
+    print('тест')
     bot.send_message(431200271, f'Привет я заработал!')
     while i:      
         with sqlite3.connect("list_of_cars.db") as conn:
