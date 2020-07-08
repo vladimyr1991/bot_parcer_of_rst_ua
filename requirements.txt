@@ -1,8 +1,4 @@
-appdirs==1.4.3
 apiai==1.2.3
-Cython==0.23
-docutils==0.13.1
-packaging==16.8
 beautifulsoup4==4.9.1
 certifi==2020.4.5.2
 cffi==1.14.0
@@ -14,10 +10,10 @@ future==0.18.2
 idna==2.10
 numpy==1.18.5
 pycparser==2.20
-pyTelegramBotAPI==3.6.1
-python-telegram-bot==7.0.1
-requests==2.13.0
-six==1.10.0
+pyTelegramBotAPI==3.7.1
+python-telegram-bot==12.7
+requests==2.7.0
+six==1.15.0
 soupsieve==2.0.1
 SQLAlchemy==1.3.18
 telebot==0.0.3
