@@ -33,10 +33,10 @@ row = cursor.fetchall()
 data_base = [x[0] for x in row]
 
 @bot.message_handler(commands=['start', 'help'])
-def command_handler():
+def command_handler(message):
     i  = True
     print('тест')
-    bot.send_message(431200271, f'Привет я заработал!')
+    bot.send_message(message.chat.id, f'Привет я заработал!')
     while i:      
         with sqlite3.connect("list_of_cars.db") as conn:
             for city, link in regions.items():
