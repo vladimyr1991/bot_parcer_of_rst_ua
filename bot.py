@@ -33,6 +33,7 @@ cursor.execute('''SELECT * FROM list_of_refs''')
 row = cursor.fetchall()
 data_base = [x[0] for x in row]
 
+
 def command_handler():
     i  = True
     bot.send_message(431200271, f'Привет я заработал!')
@@ -71,4 +72,5 @@ def command_handler():
                             bot.send_message(431200271, f'{web_site}{link_to_car}')
                             bot.send_message(431200271, f'ЦЕНА: {car_price}')
                             
-command_handler()
+if __name__ == "__main__":
+    command_handler()
